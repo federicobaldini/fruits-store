@@ -1,15 +1,16 @@
 <script>
+import FruitsList from "../components/fruits/FruitsList.vue";
+
 export default {
   data() {
-    return {
-      text: "FruitsView Works!",
-    };
+    return {};
   },
+  components: { FruitsList },
 };
 </script>
 
 <template>
-  <div class="fruits">{{ this.text }}</div>
+  <div class="fruits"><FruitsList /></div>
 </template>
 
 <style scoped></style>
