@@ -3,6 +3,8 @@ import FruitsItem from "./FruitsItem.vue";
 
 export default {
   name: "FruitsList",
+  props: ["fruits"],
+  
   data() {
     return {};
   },
@@ -12,9 +14,18 @@ export default {
 
 <template>
   <div class="fruits-list">
-    <div>FruitsList Works!</div>
-    <FruitsItem />
+    <FruitsItem
+      v-for="(fruit, fruitIndex) in this.fruits"
+      :key="fruitIndex"
+      :fruit="fruit"
+    />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.fruits-list {
+  padding: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
