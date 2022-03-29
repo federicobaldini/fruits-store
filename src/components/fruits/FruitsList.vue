@@ -1,23 +1,25 @@
-<script>
+<script setup lang="ts">
 import FruitsItem from "./FruitsItem.vue";
 
-export default {
-  name: "FruitsList",
-  props: ["fruits"],
-  
-  data() {
-    return {};
-  },
-  components: { FruitsItem },
-};
+interface Fruit {
+  id: number;
+  name: string;
+  description: string;
+  infoLink: string;
+  imagePath: string;
+}
+
+defineProps<{
+  fruits: Array<Fruit>;
+}>();
 </script>
 
 <template>
   <div class="fruits-list">
     <FruitsItem
-      v-for="(fruit, fruitIndex) in this.fruits"
+      v-for="(fruit, fruitIndex) in fruits"
       :key="fruitIndex"
-      :fruit="fruit"
+      v-bind="fruit"
     />
   </div>
 </template>
@@ -27,5 +29,6 @@ export default {
   padding: 3rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 </style>
