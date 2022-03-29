@@ -1,21 +1,56 @@
-<script>
-export default {
-  name: "FruitsItem",
-  props: ["fruit"],
+<script setup lang="ts">
+import { ref, inject, onMounted, Ref } from "vue";
+import Button from "../shared/ui/Button.vue";
 
-  data() {
-    return {};
-  },
-};
+defineProps<{
+  id: number;
+  name: string;
+  description: string;
+  imagePath: string;
+  infoLink: string;
+}>();
+
+let isLoading: Ref<boolean> = ref(false);
+const deleteFruitHandler: Function = inject("deleteFruit");
+
+onMounted(() => {
+  setTimeout(() => {
+    isLoading.value = true;
+  }, 1000);
+});
 </script>
 
 <template>
-  <div class="fruits-item">
-    <h1 class="fruits-item__title">{{ this.fruit.name.toUpperCase() }}</h1>
-    <div class="fruits-item__image-container">
-      <img class="fruits-item__image" :src="this.fruit.imagePath" alt="fruit" />
+  <Transition name="fade">
+    <div v-if="isLoading" class="fruits-item">
+      <div class="fruits-item__image-container">
+        <img class="fruits-item__image" :src="imagePath" alt="fruit" />
+      </div>
+      <div class="fruits-item__info-container">
+        <h1 class="fruits-item__title">{{ name.toUpperCase() }}</h1>
+        <div class="fruits-item__description">{{ description }}</div>
+        <div class="fruits-item__button-container">
+          <Button
+            :link="true"
+            :to="infoLink"
+            class="fruits-item__button-info"
+            text="INFO"
+            >INFO</Button
+          >
+          <Button
+            :link="false"
+            class="fruits-item__button-delete"
+            :onClick="
+              () => {
+                deleteFruitHandler(id);
+              }
+            "
+            >DELETE</Button
+          >
+        </div>
+      </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <style scoped>
@@ -23,13 +58,16 @@ export default {
   position: relative;
   margin: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 1rem;
   margin: 1rem;
   overflow: hidden;
   background: white;
-  height: 15rem;
-  width: 15rem;
+  min-height: 10rem;
+  width: 40rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .fruits-item__title {
@@ -38,11 +76,54 @@ export default {
 
 .fruits-item__image-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  height: 80%;
+  height: 8rem;
+  margin: 0 2rem 0 0;
 }
 
 .fruits-item__image {
   padding: 1rem;
+}
+
+.fruits-item__info-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.fruits-item__description {
+  font-size: 11px;
+  color: #a6acaf;
+  padding: 0 0 2rem 0;
+}
+
+.fruits-item__button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1rem 0 0;
+}
+.fruits-item__button-info {
+  margin: 0 0 0 1rem;
+  cursor: pointer;
+}
+.fruits-item__button-delete {
+  margin: 0 0 0 1rem;
+  cursor: pointer;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
