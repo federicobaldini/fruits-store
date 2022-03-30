@@ -1,10 +1,4 @@
-<script>
-export default {
-  data() {
-    return { inputText: "" };
-  },
-};
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="searchbar">SearchBar Works!</div>

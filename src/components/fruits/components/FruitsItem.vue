@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, inject, onMounted, Ref } from "vue";
-import Button from "../shared/ui/Button.vue";
+import Button from "../../shared/components/ui/Button.vue";
 
 defineProps<{
   id: number;

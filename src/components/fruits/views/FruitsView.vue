@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, provide, Ref } from "vue";
-import FruitsList from "../components/fruits/FruitsList.vue";
+import FruitsList from "../components/FruitsList.vue";
 
 interface Fruit {
   id: number;

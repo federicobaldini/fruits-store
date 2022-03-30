@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import FruitsView from "../views/FruitsView.vue";
+import FruitsView from "../components/fruits/views/FruitsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
