@@ -15,13 +15,13 @@ defineProps<{
 </script>
 
 <template>
-  <div class="fruits-list">
+  <ul class="fruits-list">
     <FruitsItem
       v-for="(fruit, fruitIndex) in fruits"
       :key="fruitIndex"
       v-bind="fruit"
     />
-  </div>
+  </ul>
 </template>
 
 <style scoped>

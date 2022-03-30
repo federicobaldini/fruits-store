@@ -22,7 +22,7 @@ onMounted(() => {
 
 <template>
   <Transition name="fade">
-    <div v-if="isLoading" class="fruits-item">
+    <li v-if="isLoading" class="fruits-item">
       <div class="fruits-item__image-container">
         <img class="fruits-item__image" :src="imagePath" alt="fruit" />
       </div>
@@ -49,7 +49,7 @@ onMounted(() => {
           >
         </div>
       </div>
-    </div>
+    </li>
   </Transition>
 </template>
 
