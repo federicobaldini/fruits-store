@@ -16,11 +16,7 @@ defineProps<{
 
 <template>
   <ul class="fruits-list">
-    <FruitsItem
-      v-for="(fruit, fruitIndex) in fruits"
-      :key="fruitIndex"
-      v-bind="fruit"
-    />
+    <FruitsItem v-for="fruit in fruits" :key="fruit.id" v-bind="fruit" />
   </ul>
 </template>
 
