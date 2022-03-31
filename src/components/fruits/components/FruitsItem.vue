@@ -28,13 +28,12 @@ onMounted(() => {
       </div>
       <div class="fruits-item__info-container">
         <h1 class="fruits-item__title">{{ name.toUpperCase() }}</h1>
-        <div class="fruits-item__description">{{ description }}</div>
+        <p class="fruits-item__description">{{ description }}</p>
         <div class="fruits-item__button-container">
           <Button
             :link="true"
             :to="infoLink"
             class="fruits-item__button-info"
-            text="INFO"
             >INFO</Button
           >
           <Button
@@ -95,9 +94,9 @@ onMounted(() => {
 }
 
 .fruits-item__description {
-  font-size: 11px;
+  font-size: 12px;
   color: #a6acaf;
-  padding: 0 0 2rem 0;
+  padding: 0 1rem 1rem 0;
 }
 
 .fruits-item__button-container {
