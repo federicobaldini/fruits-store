@@ -16,7 +16,7 @@ const deleteFruitHandler: Function = inject("deleteFruit");
 onMounted(() => {
   setTimeout(() => {
     isLoading.value = true;
-  }, 1000);
+  }, 200);
 });
 </script>
 
@@ -30,10 +30,7 @@ onMounted(() => {
         <h1 class="fruits-item__title">{{ name.toUpperCase() }}</h1>
         <p class="fruits-item__description">{{ description }}</p>
         <div class="fruits-item__button-container">
-          <Button
-            :link="true"
-            :to="infoLink"
-            class="fruits-item__button-info"
+          <Button :link="true" :to="infoLink" class="fruits-item__button-info"
             >INFO</Button
           >
           <Button
@@ -110,10 +107,19 @@ onMounted(() => {
 .fruits-item__button-info {
   margin: 0 0 0 1rem;
   cursor: pointer;
+  background: #3498db;
+}
+.fruits-item__button-info:hover {
+  background: #2874a6;
 }
 .fruits-item__button-delete {
   margin: 0 0 0 1rem;
   cursor: pointer;
+  background: #e74c3c;
+}
+
+.fruits-item__button-delete:hover {
+  background: #b03a2e;
 }
 
 .fade-enter-active,

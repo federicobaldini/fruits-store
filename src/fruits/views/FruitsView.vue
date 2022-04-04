@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, provide, Ref } from "vue";
 import FruitsList from "../components/FruitsList.vue";
+import SearchBar from "../../shared/components/search/SearchBar.vue";
 
 interface Fruit {
   id: number;
@@ -30,8 +31,13 @@ const fruits: Ref<Array<Fruit>> = ref([
       "https://www.pngall.com/wp-content/uploads/2016/05/Avocado-PNG.png",
   },
 ]);
+let filterText: Ref<string> = ref("");
 
-const deleteFruitHandler = (fruitId) => {
+const onChangeInputTextHandler = (newInputText: string) => {
+  filterText.value = newInputText;
+};
+
+const deleteFruitHandler = (fruitId: number) => {
   const fruitIndex = fruits.value.findIndex((f) => f.id === fruitId);
   fruits.value.splice(fruitIndex, 1);
 };
@@ -41,8 +47,16 @@ provide("deleteFruit", deleteFruitHandler);
 
 <template>
   <div class="fruits">
-    <FruitsList :fruits="fruits" />
+    <SearchBar @on-change-input-text="onChangeInputTextHandler" />
+    <FruitsList :fruits="fruits" :filterText="filterText" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.fruits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+</style>
