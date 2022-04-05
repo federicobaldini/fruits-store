@@ -11,7 +11,7 @@ defineProps<{
 }>();
 
 let isLoading: Ref<boolean> = ref(false);
-const deleteFruitHandler: Function = inject("deleteFruit");
+const deleteFruit: Function = inject("deleteFruit");
 
 onMounted(() => {
   setTimeout(() => {
@@ -38,7 +38,7 @@ onMounted(() => {
             class="fruits-item__button-delete"
             :onClick="
               () => {
-                deleteFruitHandler(id);
+                deleteFruit(id);
               }
             "
             >DELETE</Button
