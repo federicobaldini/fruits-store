@@ -33,11 +33,11 @@ const fruits: Ref<Array<Fruit>> = ref([
 ]);
 let filterText: Ref<string> = ref("");
 
-const onChangeInputTextHandler = (newInputText: string) => {
-  filterText.value = newInputText;
+const onChangeFilterHandler = (inputText: string): void => {
+  filterText.value = inputText;
 };
 
-const deleteFruitHandler = (fruitId: number) => {
+const deleteFruitHandler = (fruitId: number): void => {
   const fruitIndex = fruits.value.findIndex((f) => f.id === fruitId);
   fruits.value.splice(fruitIndex, 1);
 };
@@ -47,7 +47,7 @@ provide("deleteFruit", deleteFruitHandler);
 
 <template>
   <div class="fruits">
-    <SearchBar @on-change-input-text="onChangeInputTextHandler" />
+    <SearchBar @onChangeInputText="onChangeFilterHandler" />
     <FruitsList :fruits="fruits" :filterText="filterText" />
   </div>
 </template>
