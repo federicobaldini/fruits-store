@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const emit = defineEmits<{
-  (e: "on-change-input-text", value: string): void;
+  (onChangeInputText: "onChangeInputText", value: string): void;
 }>();
 </script>
 
@@ -10,7 +10,7 @@ const emit = defineEmits<{
       type="text"
       placeholder="What are you looking for?"
       class="searchbar__input"
-      @input="(event) => emit('on-change-input-text', (event.target as HTMLInputElement).value)"
+      @input="(event) => emit('onChangeInputText', (event.target as HTMLInputElement).value)"
     />
   </div>
 </template>
