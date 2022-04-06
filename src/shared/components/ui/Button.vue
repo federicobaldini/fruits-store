@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   link?: boolean;
   to?: string;
   customClass?: string;
@@ -9,13 +9,13 @@ defineProps<{
 
 <template>
   <button
-    v-if="!link"
-    :class="customClass + ' custom-button'"
-    @click="onClick()"
+    v-if="!props.link"
+    :class="props.customClass + ' custom-button'"
+    @click="props.onClick()"
   >
     <slot></slot>
   </button>
-  <a v-else :href="to" :class="customClass + ' custom-button'">
+  <a v-else :href="props.to" :class="props.customClass + ' custom-button'">
     <slot></slot>
   </a>
 </template>

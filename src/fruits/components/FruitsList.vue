@@ -9,7 +9,7 @@ interface Fruit {
   imagePath: string;
 }
 
-defineProps<{
+const props = defineProps<{
   fruits: Array<Fruit>;
   filterText: string;
 }>();
@@ -17,9 +17,9 @@ defineProps<{
 
 <template>
   <ul class="fruits-list">
-    <template v-for="fruit in fruits">
+    <template v-for="fruit in props.fruits">
       <FruitsItem
-        v-if="fruit.name.includes(filterText) || filterText === ''"
+        v-if="fruit.name.includes(props.filterText) || props.filterText === ''"
         :key="fruit.id"
         v-bind="fruit"
       />

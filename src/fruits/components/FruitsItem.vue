@@ -2,7 +2,7 @@
 import { ref, inject, onMounted, Ref } from "vue";
 import Button from "../../shared/components/ui/Button.vue";
 
-defineProps<{
+const props = defineProps<{
   id: number;
   name: string;
   description: string;
@@ -24,13 +24,16 @@ onMounted(() => {
   <Transition name="fade">
     <li v-if="isLoading" class="fruits-item">
       <div class="fruits-item__image-container">
-        <img class="fruits-item__image" :src="imagePath" alt="fruit" />
+        <img class="fruits-item__image" :src="props.imagePath" alt="fruit" />
       </div>
       <div class="fruits-item__info-container">
-        <h1 class="fruits-item__title">{{ name.toUpperCase() }}</h1>
-        <p class="fruits-item__description">{{ description }}</p>
+        <h1 class="fruits-item__title">{{ props.name.toUpperCase() }}</h1>
+        <p class="fruits-item__description">{{ props.description }}</p>
         <div class="fruits-item__button-container">
-          <Button :link="true" :to="infoLink" class="fruits-item__button-info"
+          <Button
+            :link="true"
+            :to="props.infoLink"
+            class="fruits-item__button-info"
             >INFO</Button
           >
           <Button
@@ -38,7 +41,7 @@ onMounted(() => {
             class="fruits-item__button-delete"
             :onClick="
               () => {
-                deleteFruit(id);
+                deleteFruit(props.id);
               }
             "
             >DELETE</Button
