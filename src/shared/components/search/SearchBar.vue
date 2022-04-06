@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const emit = defineEmits<{
-  (onChangeInputText: "onChangeInputText", value: string): void;
+  (event: "onChangeInputText", value: string): void;
 }>();
 </script>
 
