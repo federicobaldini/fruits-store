@@ -1,29 +1,35 @@
 # fruits-store
 
-This template should help get you started developing with Vue 3 in Vite.
+Demo project of a web application to add, delete and search fruits, using Vue and TypeScript. I made this project to practice Vue's composition API in preparation for my technical interview with Gamindo.
 
-## Recommended IDE Setup
+## Available Scripts
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+Install the dependencies:
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+then start the development server:
 
-```sh
+```
 npm run dev
 ```
 
-### Compile and Minify for Production
+Navigate to [localhost:3000](http://localhost:3000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
 
-```sh
+## Building
+
+To create an optimised version of the app:
+
+```
 npm run build
 ```
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles the application in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+You can preview the production build with `npm run preview`.
